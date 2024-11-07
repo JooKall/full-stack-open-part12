@@ -1,0 +1,17 @@
+Script started on 2024-11-07 14:59:29+02:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="146" LINES="30"]
+
+:~$ docker container ls -a
+CONTAINER ID   IMAGE         COMMAND    CREATED             STATUS                         PORTS     NAMES
+8c326a2bc71d   ubuntu        "bash"     14 minutes ago      Exited (0) 13 minutes ago                hopeful_gates
+635133b7bd4f   ubuntu        "bash"     32 minutes ago      Exited (0) 43 seconds ago                priceless_wu
+9a6467759d77   hello-world   "/hello"   33 minutes ago      Exited (0) 33 minutes ago                focused_heisenberg
+f3799117c72f   hello-world   "/hello"   About an hour ago   Exited (0) About an hour ago             laughing_einstein
+jookal@LAPTOP-I7RC2JUG:~$ docker start -i priceless_wu
+root@635133b7bd4f:/# nano /usr/src/app/index.js
+root@635133b7bd4f:/# exit
+exit
+
+:~$ exit
+exit
+
+Script done on 2024-11-07 15:03:59+02:00 [COMMAND_EXIT_CODE="0"]
