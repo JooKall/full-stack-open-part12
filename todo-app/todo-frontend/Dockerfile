@@ -11,6 +11,21 @@ RUN npm ci
 
 RUN npm run build
 
+
+# "test-stage"
+FROM node:20 AS test-stage
+
+WORKDIR /usr/src/app
+
+COPY . .
+
+ENV NODE_ENV=test
+
+RUN npm ci
+
+RUN npm run test
+
+
 # This is a new stage, everything before this is gone, except for the files that we want to COPY
 FROM nginx:1.25-alpine
 
