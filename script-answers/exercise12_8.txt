@@ -1,0 +1,90 @@
+COMMANDS:
+
+docker container ls
+docker exec -it 8c33d bash
+mongosh -u root -p example
+show dbs
+use the_database
+show collections
+db.todos.find({})
+db.todos.insertOne({text: "Increase the number of tools in my tool belt",done: false})
+
+
+
+SCRIPT:
+
+Script started on 2024-11-11 10:45:55+02:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="120" LINES="30"]
+jookal@LAPTOP-I7RC2JUG:~$ docker container ls
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                     NAMES
+b0cfd5a6a8d9   mongo     "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes   0.0.0.0:3456->27017/tcp   todo-backend-mongo-1
+jookal@LAPTOP-I7RC2JUG:~$  docker exec -it b0cfd bash
+root@b0cfd5a6a8d9:/# mongosh -u root -p example
+Current Mongosh Log ID: 6731c48ab959e2e8b0fe6910
+Connecting to:          mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.2
+Using MongoDB:          8.0.3
+Using Mongosh:          2.3.2
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-11-11T08:44:17.708+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2024-11-11T08:44:18.086+00:00: For customers running the current memory allocator, we suggest changing the contents of the following sysfsFile
+   2024-11-11T08:44:18.086+00:00: We suggest setting the contents of sysfsFile to 0.
+   2024-11-11T08:44:18.086+00:00: Your system has glibc support for rseq built in, which is not yet supported by tcmalloc-google and has critical performance implications. Please set the environment variable GLIBC_TUNABLES=glibc.pthread.rseq=0
+   2024-11-11T08:44:18.086+00:00: vm.max_map_count is too low
+   2024-11-11T08:44:18.086+00:00: We suggest setting swappiness to 0 or 1, as swapping can cause performance problems.
+------
+
+test> show dbs
+admin         100.00 KiB
+config         72.00 KiB
+local          72.00 KiB
+the_database   72.00 KiB
+test> use the_database
+switched to db the_database
+the_database> show collections
+todos
+the_database> db.todos.find({})
+[
+  {
+    _id: ObjectId('672e1c8b809db9d82dfe6911'),
+    text: 'test',
+    done: true
+  },
+  {
+    _id: ObjectId('672e1c8b809db9d82dfe6912'),
+    text: 'Learn about containers',
+    done: false
+  }
+]
+the_database> db.todos.insertOne({text: "Increase the number of tools in my tool belt",done: false})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6731c4aeb959e2e8b0fe6911')
+}
+the_database> db.todos.find({})
+[
+  {
+    _id: ObjectId('672e1c8b809db9d82dfe6911'),
+    text: 'test',
+    done: true
+  },
+  {
+    _id: ObjectId('672e1c8b809db9d82dfe6912'),
+    text: 'Learn about containers',
+    done: false
+  }
+  {
+    _id: ObjectId('6731c4aeb959e2e8b0fe6911'),
+    text: 'Increase the number of tools in my tool belt',
+    done: false
+  }
+]
+the_database> exit
+root@b0cfd5a6a8d9:/# exit
+exit
+jookal@LAPTOP-I7RC2JUG:~$ exit
+exit
+
+Script done on 2024-11-11 10:48:16+02:00 [COMMAND_EXIT_CODE="0"]

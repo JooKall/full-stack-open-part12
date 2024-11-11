@@ -1,0 +1,7 @@
+POST http://localhost:3000/todos
+Content-Type: application/json
+
+{
+    "text": "testing redis 2",
+    "done": true
+}
