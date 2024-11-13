@@ -1,0 +1,13 @@
+services:
+  server:
+    image: myapp-back-dev
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    container_name: myapp-back-dev
+    ports:
+      - 3000:3001
+    environment:
+      MONGO_URL: MONGODB_URI
+    volumes:
+      - ./:/usr/src/app

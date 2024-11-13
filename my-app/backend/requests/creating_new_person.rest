@@ -1,0 +1,7 @@
+POST https://full-stack-open-backend-yy1n.onrender.com/
+Content-Type: application/json
+
+{   
+    "name": "Alan Turing",
+    "number": "08-123456"
+}

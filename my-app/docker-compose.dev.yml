@@ -1,0 +1,34 @@
+services:
+  app:
+    image: myapp-front-dev
+    build:
+      context: ./frontend
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./frontend:/usr/src/app
+    ports:
+      - 5173:5173
+    container_name: myapp-front-dev 
+
+
+  server:
+    image: myapp-back-dev
+    build:
+      context: ./backend
+      dockerfile: dev.Dockerfile
+    ports:
+      - 3001:3001
+    volumes:
+      - ./backend:/usr/src/app
+    container_name: myapp-back-dev
+
+  nginx:
+    image: nginx:1.20.1
+    volumes:
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8080:80
+    container_name: reverse-proxy
+    depends_on:
+      - app 
+      - server
